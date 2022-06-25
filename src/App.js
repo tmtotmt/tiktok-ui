@@ -1,10 +1,19 @@
-import './App.css';
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+
+import { publicRoutes } from "./routes";
 
 function App() {
   return (
-    <div className="App">
-      <p>phần này mới</p>
-    </div>
+    <Router>
+      <div className="App">
+        <Routes>
+          {publicRoutes.map((route, index) => {
+            let Page = route.component;
+            return <Route key={index} path={route.path} element={<Page />} />;
+          })}
+        </Routes>
+      </div>
+    </Router>
   );
 }
 
